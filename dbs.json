@@ -1,0 +1,16 @@
+{
+    "ABC": [{
+        "uuid": "7329444d-0073-4266-948b-ca728e53097e",
+        "env": "prod",
+        "host": "abc-prod.db.company.tld",
+        "server": "srv-db4",
+        "port": 5432
+    }],
+    "DEF": [{
+        "uuid": "a94b836c-06ac-454e-9696-cdd04a525f52",
+        "env": "dev",
+        "host": "def-dev.db.company.tld",
+        "server": "srv-db1",
+        "port": 5432
+    }]
+}
