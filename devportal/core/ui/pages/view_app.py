@@ -1,8 +1,8 @@
 from nicegui import ui
 
 
-from devportal.ui import theme
-from devportal.ui.components import vms as vms_ui, dbs as dbs_ui
+from devportal.core.ui import theme
+from devportal.core.ui.components import vms as vms_ui, dbs as dbs_ui
 from devportal.apps import main
 from devportal.vms import main as vms
 from devportal.dbs import main as dbs

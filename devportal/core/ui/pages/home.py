@@ -1,7 +1,7 @@
 import json
 from nicegui import ui
 
-from devportal.ui import theme
+from devportal.core.ui import theme
 from devportal.apps import main
 
 

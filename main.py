@@ -1,8 +1,8 @@
-from nicegui import ui
+from devportal.core import ui
+from devportal.core import plugin_loader
 
-from devportal.ui.pages import home, view_app
 
-for page in [home, view_app]:
-    page.load()
+# Loads all devportal plugins
+plugin_loader.run()
 
 ui.run()
