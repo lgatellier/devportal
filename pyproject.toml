@@ -5,11 +5,13 @@ description = "An extensible Developer Portal."
 authors = ["Your Name <you@example.com>"]
 license = "MIT"
 readme = "README.md"
+packages = [
+    { include = "devportal", from="src" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 nicegui = "^1.4.21"
-pytest = "^8.1.1"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.0.0"
