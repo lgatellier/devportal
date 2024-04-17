@@ -3,9 +3,8 @@ import json
 
 VMS = "vms.json"
 
-CACHE = {
-    'VMS': None
-}
+CACHE = {"VMS": None}
+
 
 def list_vms(app_code: str = None):
     if not CACHE["VMS"]:
@@ -14,5 +13,5 @@ def list_vms(app_code: str = None):
 
     if not app_code:
         return CACHE["VMS"]
-    
+
     return CACHE["VMS"][app_code] if app_code in CACHE["VMS"] else None

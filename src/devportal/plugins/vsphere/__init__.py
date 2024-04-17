@@ -1,12 +1,15 @@
 from devportal.plugins import DevPortalPlugin
 
-IDENTIFIER = "vsphere"
+NAME = "vsphere"
+
 
 class VspherePlugin(DevPortalPlugin):
     def register_plugin(self):
         pass
 
+
 def load():
     return VspherePlugin()
 
-__all__ = ["IDENTIFIER", "load"]
+
+__all__ = ["NAME", "load"]

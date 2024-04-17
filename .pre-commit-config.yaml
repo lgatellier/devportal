@@ -16,3 +16,11 @@ repos:
     rev: 6.1.0
     hooks:
       - id: flake8
+-   repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: poetry run pytest
+        language: system
+        types: [python]
+        pass_filenames: false

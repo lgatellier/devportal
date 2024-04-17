@@ -3,9 +3,8 @@ import json
 
 DBS = "dbs.json"
 
-CACHE = {
-    'DBS': None
-}
+CACHE = {"DBS": None}
+
 
 def list_dbs(app_code: str = None):
     if not CACHE["DBS"]:
@@ -14,5 +13,5 @@ def list_dbs(app_code: str = None):
 
     if not app_code:
         return CACHE["DBS"]
-    
+
     return CACHE["DBS"][app_code] if app_code in CACHE["DBS"] else None

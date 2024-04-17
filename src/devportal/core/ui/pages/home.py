@@ -1,4 +1,3 @@
-import json
 from nicegui import ui
 
 from devportal.core.ui import theme
@@ -19,7 +18,5 @@ def content():
         {"name": "tags", "label": "Tags", "field": "display_tags", "align": "left"},
     ]
     apps = main.list_apps()
-    table = ui.table(
-        columns=COLUMNS, rows=apps, row_key="code"
-    ).classes("w-full")
+    table = ui.table(columns=COLUMNS, rows=apps, row_key="code").classes("w-full")
     table.on("rowClick", lambda e: ui.navigate.to(f"/app/{e.args[1]['code']}"))

@@ -1,5 +1,6 @@
 from nicegui import ui
 
+
 def db_list(dbs: list):
     COLUMNS = [
         {"name": "env", "label": "DB env", "field": "env", "align": "center"},
@@ -7,6 +8,4 @@ def db_list(dbs: list):
         {"name": "port", "label": "Port", "field": "port", "align": "center"},
         {"name": "server", "label": "Server", "field": "server", "align": "left"},
     ]
-    table = ui.table(
-        columns=COLUMNS, rows=dbs, row_key="uuid"
-    ).classes("w-full")
+    ui.table(columns=COLUMNS, rows=dbs, row_key="uuid").classes("w-full")
