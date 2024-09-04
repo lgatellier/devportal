@@ -1,7 +1,7 @@
 # Should be a VMware vSphere plugin
 import json
 
-DBS = "dbs.json"
+DBS = "data/dbs.json"
 
 CACHE = {"DBS": None}
 
@@ -14,4 +14,4 @@ def list_dbs(app_code: str = None):
     if not app_code:
         return CACHE["DBS"]
 
-    return CACHE["DBS"][app_code] if app_code in CACHE["DBS"] else None
+    return CACHE["DBS"][app_code] if app_code in CACHE["DBS"] else []

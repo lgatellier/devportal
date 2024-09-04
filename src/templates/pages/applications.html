@@ -1,0 +1,4 @@
+{% extends "pages/base.html" %}
+{% block content %}
+<div hx-get="/ui/content/apps" hx-swap="outerHTML" hx-trigger="load"></div>
+{% endblock %}

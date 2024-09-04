@@ -1,0 +1,24 @@
+<div class="row d-flex px-2 pt-3 mb-3 bg-body-tertiary" id="apps-header">
+  <h2>{{ app.name }} - {{ app.code }}</h2>
+  <ul class="nav nav-tabs fs-5 px-1" x-data="{active: '{{ active }}'}" hx-target="#apps-content" hx-trigger="click" >
+    <li class="nav-item">
+        <a class="nav-link px-3" :class="active === 'about' && 'active'" @click="active = 'about'" href="#" hx-get="/ui/partial/app/{{ app.code }}/about" hx-push-url="/ui/app/{{ app.code }}/about">
+          <i class="bi-info-circle"></i>
+          <span class="ms-2">{{ 'apps.about' | i18n }}</span>
+        </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link px-3" :class="active === 'servers' && 'active'" @click="active = 'servers'" href="#" hx-get="/ui/partial/app/{{ app.code }}/servers" hx-push-url="/ui/app/{{ app.code }}/servers">
+        <i class="bi-cpu"></i>
+        <span class="ms-2">{{ 'apps.servers' | i18n }}</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link px-3" :class="active === 'databases' && 'active'" @click="active = 'databases'" href="#" hx-get="/ui/partial/app/{{ app.code }}/databases" hx-push-url="/ui/app/{{ app.code }}/databases">
+        <i class="bi-database"></i>
+        <span class="ms-2">{{ 'apps.databases' | i18n }}</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div id="apps-content" hx-get="/ui/partial/app/{{ app.code }}/{{ active }}" hx-trigger="load"></div>

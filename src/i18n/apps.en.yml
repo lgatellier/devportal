@@ -1,0 +1,33 @@
+en:
+  about: About
+  app_url: Application URL
+  app_repo: Application repository
+  databases: Databases
+  database:
+    dbname: Database name
+    environment: Environment
+    host: Hostname:Port
+    server: Server name
+    engine: Engine
+    engines:
+      mysql: MySQL
+      postgres: PostgreSQL
+  os:
+    almalinux: AlmaLinux
+    centos: CentOS
+    windowsserver: Windows Server
+  owner: Owner
+  servers: Servers
+  server:
+    actions: Actions
+    environment: Environment
+    hostname: Hostname
+    os: Operating System
+    status: Status
+  technology:
+    label: Technology
+    java: Java
+    python: Python
+  type:
+    label: Type
+    service: Service
