@@ -1,0 +1,26 @@
+<table class="table table-striped table-hover">
+  <thead>
+      <tr>
+          <th class="col-3">{{ 'apps.database.host' | i18n }}</th>
+          <th class="col-2">{{ 'apps.database.dbname' | i18n }}</th>
+          <th class="col-2">{{ 'apps.database.environment' | i18n }}</th>
+          <th class="col-3">{{ 'apps.database.server' | i18n }}</th>
+          <th class="col-1">{{ 'apps.database.engine' | i18n }}</th>
+      </tr>
+  </thead>
+  <tbody class="table-group-divider">
+      {% for db in databases %}
+      <tr>
+          <td>{{ db.host }}:{{ db.port }}</td>
+          <td>{{ db.name }}</td>
+          <td>{{ db.env }}</td>
+          <td>{{ db.server }}</td>
+          <td>{{ ('apps.database.engines.' + db.engine.name) | i18n }} {{ db.engine.version }}</td>
+      </tr>
+      {% else %}
+      <tr>
+          <td colspan="5">No databases linked to application {{ app.code }}</td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>

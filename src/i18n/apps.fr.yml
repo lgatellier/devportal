@@ -1,0 +1,23 @@
+fr:
+  about: À Propos
+  app_url: URL de l'application
+  app_repo: Dépôt de l'application
+  databases: Bases de données
+  database:
+    dbname: Nom de la base
+    environment: Environnement
+    host: Adresse de l'hôte
+    server: Nom du serveur
+    engine: Moteur
+  owner: Responsable
+  servers: Serveurs
+  server:
+    actions: Actions
+    environment: Environnement
+    hostname: Nom d'hôte
+    os: Système d'Exploitation
+    status: Statut
+  technology:
+    label: Technologie
+  type:
+    label: Type

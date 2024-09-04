@@ -1,0 +1,29 @@
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-5">New application</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form hx-post="/api/app">
+            <div class="mb-3">
+              <label for="appName" class="form-label">Application name</label>
+              <input type="text" class="form-control" id="appName" name="appName">
+            </div>
+            <div class="mb-3">
+              <label for="appCode" class="form-label">Application code</label>
+              <input type="text" class="form-control" id="appCode" name="appCode" aria-describedby="appCodeHelp">
+              <div id="appCodeHelp" class="form-text">A unique code that identifies the application for you</div>
+            </div>
+            <div class="mb-3">
+              <label for="appDescription" class="form-label">Application description</label>
+              <input type="text" class="form-control" id="appDescription" name="appDescription">
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Create application</button>
+      </div>
+    </div>
+  </div>

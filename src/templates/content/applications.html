@@ -1,0 +1,40 @@
+<div class="row d-flex px-2 pt-3 mb-3 bg-body-tertiary" id="apps-header">
+  <h2>{{ 'global.applications' | i18n }}</h2>
+</div>
+<div id="apps-actions" class="d-flex justify-content-end">
+    <button class="btn btn-primary" hx-get="/ui/partial/app/new" hx-target="#newAppModal" data-bs-toggle="modal" data-bs-target="#newAppModal" hx-trigger="click">
+        <i class="bi-plus-circle-fill"></i>
+        <span class="ms-2">New application</span>
+    </button>
+</div>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Tags</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider" style="cursor: pointer;">
+        {% for app in applications %}
+        {% set app_fetch_url = "/ui/content/app/" + app.code %}
+        {% set app_url = "/ui/app/" + app.code %}
+        <tr hx-get="{{ app_fetch_url }}" hx-push-url="{{ app_url }}" hx-target="#content-wrapper">
+            <td><a hx-get="{{ app_fetch_url }}" hx-push-url="{{ app_url }}" hx-target="#content-wrapper">{{ app.code }}</a></td>
+            <td><a hx-get="{{ app_fetch_url }}" hx-push-url="{{ app_url }}" hx-target="#content-wrapper">{{ app.name }}</a></td>
+            <td>{{ ('apps.type.' + app.metadata.type) | i18n }}</td>
+            <td>{{ ', '.join(app.tags) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div id="newAppModal"
+    class="modal modal-blur fade"
+    style="display: none"
+    aria-hidden="false"
+    tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content"></div>
+    </div>
+</div>
