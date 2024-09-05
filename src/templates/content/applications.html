@@ -23,7 +23,7 @@
         <tr hx-get="{{ app_fetch_url }}" hx-push-url="{{ app_url }}" hx-target="#content-wrapper">
             <td><a hx-get="{{ app_fetch_url }}" hx-push-url="{{ app_url }}" hx-target="#content-wrapper">{{ app.code }}</a></td>
             <td><a hx-get="{{ app_fetch_url }}" hx-push-url="{{ app_url }}" hx-target="#content-wrapper">{{ app.name }}</a></td>
-            <td>{{ ('apps.type.' + app.metadata.type) | i18n }}</td>
+            <td>{{ ('apps.type.' + app.type.value) | i18n }}</td>
             <td>{{ ', '.join(app.tags) }}</td>
         </tr>
         {% endfor %}

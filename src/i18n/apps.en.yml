@@ -1,7 +1,11 @@
 en:
   about: About
+  alert:
+    new:
+      success: The application '__NAME__' has been created.
   app_url: Application URL
   app_repo: Application repository
+  code: Code
   databases: Databases
   database:
     dbname: Database name
@@ -12,6 +16,9 @@ en:
     engines:
       mysql: MySQL
       postgres: PostgreSQL
+  description: Description
+  name: Name
+  new: New application
   os:
     almalinux: AlmaLinux
     centos: CentOS
@@ -30,4 +37,6 @@ en:
     python: Python
   type:
     label: Type
+    batch: Batch
     service: Service
+    library: Library

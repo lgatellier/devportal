@@ -5,11 +5,11 @@
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <dl class="row col-6">
           <dt class="col-6">{{ 'apps.owner' | i18n }}</dt>
-          <dd class="col-6">{{ app.metadata.owner }}</dd>
+          <dd class="col-6">TODO : Someone</dd>
           <dt class="col-6">{{ 'apps.type.label' | i18n }}</dt>
-          <dd class="col-6">{{ ('apps.type.' + app.metadata.type) | i18n }}</dd>
+          <dd class="col-6">{{ ('apps.type.' + app.type.value) | i18n }}</dd>
           <dt class="col-6">{{ 'apps.technology.label' | i18n }}</dt>
-          <dd class="col-6">{{ ('apps.technology.' + app.metadata.technology) | i18n }}</dd>
+          <dd class="col-6">TODO some tech stack</dd>
         </dl>
         <p class="card-text"><i class="bi-tag"></i><span class="ms-2">{{ app.tags | join(', ') }}</span></p>
         <a href="https://github.com/lgatellier/devportal" class="card-link link-primary link-underline-opacity-0 link-underline-opacity-100-hover">
