@@ -1,5 +1,8 @@
 fr:
   about: À Propos
+  alert:
+    new:
+      success: L'application '__NAME__' a été créée.
   app_url: URL de l'application
   app_repo: Dépôt de l'application
   databases: Bases de données
@@ -9,6 +12,8 @@ fr:
     host: Adresse de l'hôte
     server: Nom du serveur
     engine: Moteur
+  name: Nom
+  new: Nouvelle application
   owner: Responsable
   servers: Serveurs
   server:

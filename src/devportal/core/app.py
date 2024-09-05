@@ -1,10 +1,26 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
+from fastapi.exception_handlers import request_validation_exception_handler
 from fastapi.templating import Jinja2Templates
 import i18n
 from jinja2 import Environment, FileSystemLoader
 
 
 app = FastAPI()
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    if request.headers["HX-Request"] == "true":
+        return templates.TemplateResponse(
+            request=request,
+            name="partial/errors.html",
+            context={"errors": exc.errors()},
+            status_code=400,
+        )
+    return await request_validation_exception_handler(request, exc)
+
+
 jinja_env = Environment(loader=FileSystemLoader("src/templates"), autoescape=True)
 jinja_env.filters["i18n"] = i18n.t
 templates = Jinja2Templates(env=jinja_env)

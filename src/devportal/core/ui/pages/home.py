@@ -2,6 +2,8 @@ from devportal.core.app import app, templates
 from fastapi import Request
 from fastapi.responses import HTMLResponse
 
+from devportal.core.model import Type
+
 
 @app.get("/ui/apps", response_class=HTMLResponse)
 async def page_apps(request: Request):
@@ -25,4 +27,5 @@ async def new_app_modal(request: Request):
     return templates.TemplateResponse(
         request=request,
         name="partial/app/new.html",
+        context={"types": [e.value for e in Type]},
     )

@@ -1,5 +1,6 @@
 from devportal.apps import main as apps
 from devportal.core.app import app, templates
+from devportal.core.model import ApplicationBase
 from devportal.vms import main as vms
 from devportal.dbs import main as dbs
 from fastapi import Request
@@ -65,4 +66,14 @@ async def get_application_partial_databases(request: Request, app_code: str):
         request=request,
         name="partial/app/databases.html",
         context={"app": {"code": app_code}, "databases": db_list},
+    )
+
+
+@app.post("/ui/app", response_class=HTMLResponse, status_code=201)
+async def create_application(request: Request, app: ApplicationBase):
+    apps.create_app(app)
+    return templates.TemplateResponse(
+        request=request,
+        name="partial/app/alert.html",
+        context={"app": app, "message": "apps.alert.new.success", "level": "success"},
     )
