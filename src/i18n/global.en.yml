@@ -1,5 +1,8 @@
 en:
   about: About
+  action:
+    close: Close
+    create: Create
   appname: AppAtlas
   applications: Applications
   application: Application

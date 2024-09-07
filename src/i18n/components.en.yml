@@ -1,6 +1,12 @@
 en:
   action:
     new: New component
+  alert:
+    new:
+      success: The component '__NAME__' has been created.
+  code: Code
+  description: Description
+  name: Name
   type:
     label: Type
     values:

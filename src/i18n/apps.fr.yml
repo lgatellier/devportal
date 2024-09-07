@@ -1,4 +1,6 @@
 fr:
+  action:
+    new: Nouvelle application
   alert:
     new:
       success: L'application '__NAME__' a été créée.
@@ -13,7 +15,6 @@ fr:
     server: Nom du serveur
     engine: Moteur
   name: Nom
-  new: Nouvelle application
   servers: Serveurs
   server:
     actions: Actions

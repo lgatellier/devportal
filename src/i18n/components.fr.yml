@@ -1,6 +1,10 @@
 fr:
   action:
     new: Nouveau composant
+  alert:
+    new:
+      success: Le composant '__NAME__' a été créé.
+  name: Nom
   type:
     values:
       library: Bibliothèque
