@@ -23,7 +23,7 @@
         </tr>
         {% else %}
         <tr>
-            <td colspan="3">{{ 'global.no_result'| i18n }}</td>
+            <td colspan="{{ 5 if show_application else 4 }}">{{ 'global.no_result'| i18n }}</td>
         </tr>
         {% endfor %}
     </tbody>

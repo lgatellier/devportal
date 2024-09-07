@@ -2,10 +2,10 @@ from fastapi import Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from uuid import UUID
 
-from devportal.core.models.app import ApplicationQuery
-from devportal.core import api, templates
-from devportal.vms import main as vms
-from devportal.dbs import main as dbs
+from appatlas.core.models.app import ApplicationQuery
+from appatlas.core import api, templates
+from appatlas.vms import main as vms
+from appatlas.dbs import main as dbs
 
 
 @api.get("/ui/app/{id}", response_class=RedirectResponse, status_code=301)

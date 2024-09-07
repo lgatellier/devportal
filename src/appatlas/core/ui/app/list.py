@@ -1,8 +1,8 @@
-from devportal.core import api, templates
+from appatlas.core import api, templates
 from fastapi import Request
 from fastapi.responses import HTMLResponse
 
-from devportal.core.models.app import ApplicationQuery
+from appatlas.core.models.app import ApplicationQuery
 
 
 @api.get("/ui/apps", response_class=HTMLResponse)

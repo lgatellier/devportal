@@ -1,4 +1,4 @@
-# devportal
+# appatlas
 An extensible Developer Portal.
 
  :construction: This project is under development. :construction:

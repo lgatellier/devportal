@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "devportal"
+name = "appatlas"
 version = "0.1.0"
 description = "An extensible Developer Portal."
 authors = ["Your Name <you@example.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [
-    { include = "devportal", from="src" }
+    { include = "appatlas", from="src" }
 ]
 
 [tool.poetry.dependencies]

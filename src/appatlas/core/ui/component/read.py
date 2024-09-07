@@ -1,9 +1,9 @@
 from uuid import UUID
-from devportal.core import api, templates
+from appatlas.core import api, templates
 from fastapi import Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 
-from devportal.core.models.app import ComponentQuery
+from appatlas.core.models.app import ComponentQuery
 
 
 @api.get("/ui/component/{id}", response_class=RedirectResponse, status_code=301)

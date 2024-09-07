@@ -1,7 +1,7 @@
 from sqlmodel import create_engine, Session
 
 engine = create_engine(
-    "postgresql://devportal:devportal@localhost/devportal", echo_pool=True
+    "postgresql://appatlas:appatlas@localhost/appatlas", echo_pool=True
 )
 
 

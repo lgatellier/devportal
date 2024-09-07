@@ -1,9 +1,9 @@
-from devportal.plugins import DevPortalPlugin
+from appatlas.plugins import AppAtlasPlugin
 
 NAME = "vsphere"
 
 
-class VspherePlugin(DevPortalPlugin):
+class VspherePlugin(AppAtlasPlugin):
     def register_plugin(self):
         pass
 

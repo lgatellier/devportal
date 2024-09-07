@@ -1,7 +1,7 @@
 from abc import ABC
 
 
-class DevPortalPlugin(ABC):
+class AppAtlasPlugin(ABC):
     @classmethod
     def __subclasshook__(cls, __subclass: type) -> bool:
         return hasattr(__subclass, "register_plugin") and callable(
@@ -9,4 +9,4 @@ class DevPortalPlugin(ABC):
         )
 
 
-__all__ = ["DevPortalPlugin"]
+__all__ = ["AppAtlasPlugin"]

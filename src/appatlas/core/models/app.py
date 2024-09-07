@@ -3,7 +3,7 @@ from uuid import uuid4, UUID
 from sqlmodel import Field, Relationship, SQLModel, select, Session
 from sqlalchemy.orm import selectinload
 
-from devportal.core.models import engine, get_session
+from appatlas.core.models import engine, get_session
 
 
 class DomainBase(SQLModel):
@@ -20,8 +20,8 @@ class ApplicationBase(SQLModel):
     code: str = Field(min_length=1, nullable=False)
     name: str = Field(min_length=1, nullable=False)
     description: str = Field(min_length=1, nullable=False)
-    domain_id: UUID = Field(
-        default=None, foreign_key="domain.id", nullable=False, index=True
+    domain_id: UUID | None = Field(
+        default=None, foreign_key="domain.id", nullable=True, index=True
     )
 
 
@@ -31,6 +31,13 @@ class Application(ApplicationBase, table=True):
         back_populates="applications", sa_relationship_kwargs={"lazy": "joined"}
     )
     components: list["Component"] = Relationship(back_populates="application")
+
+    @staticmethod
+    def from_base(app: ApplicationBase) -> "Application":
+        result = Application()
+        for key, val in app.model_dump().items():
+            setattr(result, key, val)
+        return result
 
 
 class Type(Enum):
@@ -84,7 +91,10 @@ class ApplicationQuery:
     @staticmethod
     def create(app: ApplicationBase):
         with Session(engine) as session:
-            session.add(Application.model_validate(app))
+            ApplicationBase.model_validate(app)
+            entity = Application.from_base(app)
+            Application.model_validate(entity)
+            session.add(entity)
             session.commit()
 
 

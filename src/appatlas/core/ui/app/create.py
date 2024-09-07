@@ -1,8 +1,8 @@
 from fastapi import Request
 from fastapi.responses import HTMLResponse
 
-from devportal.core import api, templates
-from devportal.core.models.app import ApplicationBase, ApplicationQuery
+from appatlas.core import api, templates
+from appatlas.core.models.app import ApplicationBase, ApplicationQuery
 
 
 @api.post("/ui/app", response_class=HTMLResponse, status_code=201)
