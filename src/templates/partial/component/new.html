@@ -1,0 +1,48 @@
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" x-data="{'success': false}">
+      <div class="modal-header">
+        <h5 class="modal-title fs-5">{{ 'components.action.new' | i18n }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" hx-ext="response-targets">
+        <div id="newComponentFormAlert" x-show="!success"></div>
+        <form id="newComponentForm" hx-post="/ui/component" hx-ext="json-enc" hx-target-*="#newComponentFormAlert" @htmx:after-request.camel="success = $event.detail.successful;">
+          <div class="mb-3" x-data="{'applications': [{'id': 'tototiti', 'name': 'Toto Titi'}], 'search': '', 'selected': '', 'opened': false}">
+            <label for="componentApplication" class="form-label">{{ 'global.application' | i18n }}</label>
+            <input type="text" class="form-control" id="componentApplication" @keyup.throttle="if($event.target.value.length > 2) { applications = await(await fetch('http://127.0.0.1:8000/api/applications?search=' + $event.target.value)).json() ; opened = true;}" x-ref="appInput">
+            <input type="hidden" name="application_id" :value="selected.id" />
+            <ul id="autocomplete-results" class="list-group" style="position: absolute;" @click.outside="opened = false" :class="!opened && 'd-none'">
+              <template x-for="app in applications">
+                <li class="list-group-item" x-text="app.name" @click="selected = app ; opened = false ; $refs.appInput.value = app.name"></li>
+              </template>
+            </ul>
+          </div>
+          <div class="mb-3">
+            <label for="componentName" class="form-label">{{ 'components.name' | i18n }}</label>
+            <input type="text" class="form-control" id="componentName" name="name">
+          </div>
+          <div class="mb-3">
+            <label for="componentCode" class="form-label">{{ 'components.code' | i18n }}</label>
+            <input type="text" class="form-control" id="componentCode" name="code" aria-describedby="componentCodeHelp">
+            <div id="componentCodeHelp" class="form-text">A unique code that identifies the componentlication for you</div>
+          </div>
+          <div class="mb-3">
+            <label for="componentDescription" class="form-label">{{ 'components.description' | i18n }}</label>
+            <input type="text" class="form-control" id="componentDescription" name="description">
+          </div>
+          <div class="mb-3">
+            <label for="componentType" class="form-label">{{ 'components.type.label' | i18n }}</label>
+            <select class="form-select" id="componentType" name="type">
+              {% for type in types %}
+              <option value="{{ type.value }}">{{ ('components.type.values.' + type.value) | i18n }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'global.action.close' | i18n }}</button>
+        <input type="submit" class="btn btn-primary" form="newComponentForm" value="{{ 'global.action.create' | i18n }}" x-show="!success"/>
+    </div>
+    </div>
+  </div>

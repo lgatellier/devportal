@@ -1,4 +1,6 @@
 en:
+  action:
+    new: New application
   alert:
     new:
       success: The application '__NAME__' has been created.
@@ -18,7 +20,6 @@ en:
       postgres: PostgreSQL
   description: Description
   name: Name
-  new: New application
   os:
     almalinux: AlmaLinux
     centos: CentOS

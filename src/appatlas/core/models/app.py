@@ -1,6 +1,6 @@
 from enum import Enum
 from uuid import uuid4, UUID
-from sqlmodel import Field, Relationship, SQLModel, select, Session
+from sqlmodel import Field, Relationship, SQLModel, select, Session, or_
 from sqlalchemy.orm import selectinload
 
 from appatlas.core.models import engine, get_session
@@ -33,9 +33,9 @@ class Application(ApplicationBase, table=True):
     components: list["Component"] = Relationship(back_populates="application")
 
     @staticmethod
-    def from_base(app: ApplicationBase) -> "Application":
+    def from_base(source: ApplicationBase) -> "Application":
         result = Application()
-        for key, val in app.model_dump().items():
+        for key, val in source.model_dump().items():
             setattr(result, key, val)
         return result
 
@@ -60,7 +60,7 @@ class ComponentBase(SQLModel):
     name: str = Field(min_length=1, nullable=False)
     description: str = Field(min_length=1, nullable=False)
     type: Type = Field(default=Type.service, index=True)
-    techstack_id: UUID = Field(
+    techstack_id: UUID | None = Field(
         default=None, foreign_key="techstack.id", nullable=True, index=True
     )
     application_id: UUID = Field(
@@ -75,12 +75,32 @@ class Component(ComponentBase, table=True):
         sa_relationship_kwargs={"lazy": "joined"}
     )
 
+    @staticmethod
+    def from_base(source: ComponentBase) -> "Component":
+        result = Component()
+        for key, val in source.model_dump().items():
+            setattr(result, key, val)
+        return result
+
 
 class ApplicationQuery:
     @staticmethod
     def list():
         with get_session() as session:
             statement = select(Application)
+            return session.exec(statement).all()
+
+    @staticmethod
+    def search(query: str):
+        query = f"%{query}%"
+        with get_session() as session:
+            statement = select(Application).where(
+                or_(
+                    Application.name.like(query),
+                    Application.code.like(query),
+                    Application.description.like(query),
+                )
+            )
             return session.exec(statement).all()
 
     @staticmethod
@@ -91,7 +111,6 @@ class ApplicationQuery:
     @staticmethod
     def create(app: ApplicationBase):
         with Session(engine) as session:
-            ApplicationBase.model_validate(app)
             entity = Application.from_base(app)
             Application.model_validate(entity)
             session.add(entity)
@@ -119,6 +138,14 @@ class ComponentQuery:
             result = session.get(Component, id)
             result.application
             return result
+
+    @staticmethod
+    def create(app: ComponentBase):
+        with Session(engine) as session:
+            entity = Component.from_base(app)
+            Component.model_validate(entity)
+            session.add(entity)
+            session.commit()
 
 
 __all__ = [
