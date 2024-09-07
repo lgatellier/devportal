@@ -11,7 +11,7 @@ api = FastAPI()
 
 @api.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
-    if request.headers["HX-Request"] == "true":
+    if "HX-Request" in request.headers:
         return templates.TemplateResponse(
             request=request,
             name="partial/errors.html",

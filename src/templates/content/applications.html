@@ -17,7 +17,7 @@
     </thead>
     <tbody class="table-group-divider" style="cursor: pointer;">
         {% for app in applications %}
-        <tr hx-get="/ui/content/app/{{ app.code }}" hx-push-url="/ui/app/{{ app.code }}" hx-target="#content-wrapper" role="link">
+        <tr hx-get="/ui/content/app/{{ app.id }}" hx-push-url="/ui/app/{{ app.id }}" hx-target="#content-wrapper" role="link">
             <td>{{ app.code }}</td>
             <td>{{ app.name }}</td>
             <td>{{ ', '.join(app.tags) }}</td>

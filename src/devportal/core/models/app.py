@@ -61,9 +61,9 @@ class ApplicationQuery:
             return session.exec(statement).all()
 
     @staticmethod
-    def get(app_code: str):
-        apps = [app for app in ApplicationQuery.list() if app.code == app_code]
-        return apps[0] if len(apps) > 0 else None
+    def get(id: UUID):
+        with get_session() as session:
+            return session.get(Application, id)
 
     @staticmethod
     def create(app: ApplicationBase):
