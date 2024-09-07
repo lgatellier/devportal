@@ -96,9 +96,9 @@ class ApplicationQuery:
         with get_session() as session:
             statement = select(Application).where(
                 or_(
-                    Application.name.like(query),
-                    Application.code.like(query),
-                    Application.description.like(query),
+                    Application.name.ilike(query),
+                    Application.code.ilike(query),
+                    Application.description.ilike(query),
                 )
             )
             return session.exec(statement).all()

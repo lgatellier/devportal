@@ -20,8 +20,9 @@ async def ui_root():
     return "/ui/apps"
 
 
-@fastapi_app.exception_handler(RequestValidationError)
+@ui_app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    print(request.headers)
     if "HX-Request" in request.headers:
         return templates.TemplateResponse(
             request=request,

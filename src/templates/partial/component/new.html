@@ -7,15 +7,15 @@
       <div class="modal-body" hx-ext="response-targets">
         <div id="newComponentFormAlert" x-show="!success"></div>
         <form id="newComponentForm" hx-post="/ui/component" hx-ext="json-enc" hx-target-*="#newComponentFormAlert" @htmx:after-request.camel="success = $event.detail.successful;">
-          <div class="mb-3" x-data="{'applications': [{'id': 'tototiti', 'name': 'Toto Titi'}], 'search': '', 'selected': '', 'opened': false}">
+          <div class="mb-3" x-data="{'applications': [], 'search': '', 'selected': '', 'opened': false}">
             <label for="componentApplication" class="form-label">{{ 'global.application' | i18n }}</label>
-            <input type="text" class="form-control" id="componentApplication" @keyup.throttle="if($event.target.value.length > 2) { applications = await(await fetch('http://127.0.0.1:8000/api/applications?search=' + $event.target.value)).json() ; opened = true;}" x-ref="appInput">
-            <input type="hidden" name="application_id" :value="selected.id" />
-            <ul id="autocomplete-results" class="list-group" style="position: absolute;" @click.outside="opened = false" :class="!opened && 'd-none'">
+            <input type="text" class="form-control" :value="selected && selected.name" list="autocomplete-results" @keyup.throttle="if($event.target.value.length > 2) { applications = await(await fetch('http://127.0.0.1:8000/api/applications?search=' + $event.target.value)).json() ; opened = true;}" autocomplete="off">
+            <input type="hidden" name="application_id" :value="selected && selected.id" />
+            <div id="autocomplete-results" class="list-group position-absolute" @click.outside="opened = false" :class="!opened && 'd-none'">
               <template x-for="app in applications">
-                <li class="list-group-item" x-text="app.name" @click="selected = app ; opened = false ; $refs.appInput.value = app.name"></li>
+                <a href="#" class="list-group-item list-group-item-action" x-text="app.name" @click="selected = app ; opened = false ;"></a>
               </template>
-            </ul>
+            </div>
           </div>
           <div class="mb-3">
             <label for="componentName" class="form-label">{{ 'components.name' | i18n }}</label>
