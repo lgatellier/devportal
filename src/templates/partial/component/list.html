@@ -4,6 +4,7 @@
             <th>Code</th>
             <th>Name</th>
             <th>Type</th>
+            <th>Technology</th>
             {% if show_application %}
             <th>Application</th>
             {% endif %}
@@ -15,6 +16,7 @@
             <td>{{ component.code }}</td>
             <td>{{ component.name }}</td>
             <td>{{ ('components.type.values.' + component.type.value) | i18n }}</td>
+            <td>{{ component.tech_stack.name }}</td>
             {% if show_application %}
             <td>{{ component.application.name }} - {{ component.application.code }}</td>
             {% endif %}

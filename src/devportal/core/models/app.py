@@ -23,11 +23,23 @@ class Type(Enum):
     service = "service"
 
 
+class TechStackBase(SQLModel):
+    name: str = Field(min_length=1, nullable=False)
+    description: str = Field(min_length=1, nullable=False)
+
+
+class TechStack(TechStackBase, table=True):
+    id: UUID = Field(default_factory=uuid4, primary_key=True)
+
+
 class ComponentBase(SQLModel):
     code: str = Field(min_length=1, nullable=False)
     name: str = Field(min_length=1, nullable=False)
     description: str = Field(min_length=1, nullable=False)
     type: Type = Field(default=Type.service, index=True)
+    techstack_id: UUID = Field(
+        default=None, foreign_key="techstack.id", nullable=True, index=True
+    )
     application_id: UUID = Field(
         default=None, foreign_key="application.id", nullable=False, index=True
     )
@@ -36,6 +48,9 @@ class ComponentBase(SQLModel):
 class Component(ComponentBase, table=True):
     id: UUID = Field(default_factory=uuid4, primary_key=True)
     application: Application | None = Relationship(back_populates="components")
+    tech_stack: TechStack | None = Relationship(
+        sa_relationship_kwargs={"lazy": "joined"}
+    )
 
 
 class ApplicationQuery:
