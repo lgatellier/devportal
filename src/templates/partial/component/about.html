@@ -5,7 +5,11 @@
       <p class="card-text">{{ component.description }}</p>
       <dl class="row col-6">
         <dt class="col-6">{{ 'global.application' | i18n }}</dt>
-        <dd class="col-6">{{ component.application.name }} - {{ component.application.code }}</dd>
+        <dd class="col-6">
+          <a href="/ui/app/{{ component.application.code }}">
+            {{ component.application.name }} - {{ component.application.code }}
+          </a>
+        </dd>
         <dt class="col-6">{{ 'global.owner' | i18n }}</dt>
         <dd class="col-6">TODO : Someone</dd>
         <dt class="col-6">{{ 'apps.technology.label' | i18n }}</dt>
