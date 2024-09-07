@@ -1,0 +1,12 @@
+<div class="row d-flex px-2 pt-3 mb-3 bg-body-tertiary" id="components-header">
+  <h2>{{ component.name }} - {{ component.code }}</h2>
+  <ul class="nav nav-tabs fs-5 px-1" x-data="{active: '{{ active }}'}" hx-target="#cmp-content" hx-trigger="click" >
+    <li class="nav-item">
+        <a class="nav-link px-3" :class="active === 'about' && 'active'" @click="active = 'about'" href="#" hx-get="/ui/partial/component/{{ component.id }}/about" hx-push-url="/ui/app/{{ component.id }}/about">
+          <i class="bi-info-circle"></i>
+          <span class="ms-2">{{ 'global.about' | i18n }}</span>
+        </a>
+    </li>
+  </ul>
+</div>
+<div id="apps-content" hx-get="/ui/partial/component/{{ component.id }}/{{ active }}" hx-trigger="load"></div>

@@ -17,14 +17,6 @@
             <div id="appCodeHelp" class="form-text">A unique code that identifies the application for you</div>
           </div>
           <div class="mb-3">
-            <label for="appType" class="form-label">{{ 'apps.type.label' | i18n }}</label>
-            <select type="text" class="form-control" id="appType" name="type">
-              {% for type in types %}
-              <option>{{ type }}</option>
-              {% endfor %}
-            </select>
-          </div>
-          <div class="mb-3">
             <label for="appDescription" class="form-label">{{ 'apps.description' | i18n }}</label>
             <input type="text" class="form-control" id="appDescription" name="description">
           </div>

@@ -1,10 +1,10 @@
 fr:
-  about: À Propos
   alert:
     new:
       success: L'application '__NAME__' a été créée.
-  app_url: URL de l'application
-  app_repo: Dépôt de l'application
+  app_url: Accès à l'application
+  app_repo: Sources
+  components: Composants
   databases: Bases de données
   database:
     dbname: Nom de la base
@@ -14,7 +14,6 @@ fr:
     engine: Moteur
   name: Nom
   new: Nouvelle application
-  owner: Responsable
   servers: Serveurs
   server:
     actions: Actions
@@ -24,5 +23,3 @@ fr:
     status: Statut
   technology:
     label: Technologie
-  type:
-    label: Type

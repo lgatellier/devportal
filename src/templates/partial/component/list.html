@@ -1,0 +1,22 @@
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider" style="cursor: pointer;">
+        {% for cmp in components %}
+        <tr hx-get="/ui/content/component/{{cmp.id}}" hx-target="#content-wrapper" hx-push-url="/ui/component/{{ cmp.id }}" role="link">
+            <td>{{ cmp.code }}</td>
+            <td>{{ cmp.name }}</td>
+            <td>{{ cmp.type }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3">{{ 'global.no_result'| i18n }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

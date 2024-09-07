@@ -1,6 +1,11 @@
 en:
+  about: About
   appname: DevPortal
   applications: Applications
+  application: Application
   homepage: Homepage
   metadata: Metadata
+  no_result: No result.
+  no_tags: No tags
+  owner: Owner
   search: Search

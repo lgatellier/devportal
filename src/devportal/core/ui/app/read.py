@@ -1,7 +1,7 @@
 from fastapi import Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 
-from devportal.apps import main as apps
+from devportal.core.models.app import ApplicationQuery
 from devportal.core import api, templates
 from devportal.vms import main as vms
 from devportal.dbs import main as dbs
@@ -16,7 +16,7 @@ async def get_application_root(app_code: str):
 async def get_application_partial(
     request: Request, app_code: str, partial: str = "about"
 ):
-    app = apps.get_app(app_code)
+    app = ApplicationQuery.get(app_code)
     return templates.TemplateResponse(
         request=request,
         name="pages/single_application.html",
@@ -33,7 +33,7 @@ async def get_application_content_root(app_code: str):
 async def get_application_content_partial(
     request: Request, app_code: str, partial: str
 ):
-    app = apps.get_app(app_code)
+    app = ApplicationQuery.get(app_code)
     return templates.TemplateResponse(
         request=request,
         name="content/single_application.html",
@@ -43,7 +43,7 @@ async def get_application_content_partial(
 
 @api.get("/ui/partial/app/{app_code}/about", response_class=HTMLResponse)
 async def get_application_partial_about(request: Request, app_code: str):
-    app = apps.get_app(app_code)
+    app = ApplicationQuery.get(app_code)
     return templates.TemplateResponse(
         request=request, name="partial/app/about.html", context={"app": app}
     )

@@ -12,19 +12,19 @@
         <tr>
             <th>Code</th>
             <th>Name</th>
-            <th>Type</th>
             <th>Tags</th>
         </tr>
     </thead>
     <tbody class="table-group-divider" style="cursor: pointer;">
         {% for app in applications %}
-        {% set app_fetch_url = "/ui/content/app/" + app.code %}
-        {% set app_url = "/ui/app/" + app.code %}
-        <tr hx-get="{{ app_fetch_url }}" hx-push-url="{{ app_url }}" hx-target="#content-wrapper">
-            <td><a hx-get="{{ app_fetch_url }}" hx-push-url="{{ app_url }}" hx-target="#content-wrapper">{{ app.code }}</a></td>
-            <td><a hx-get="{{ app_fetch_url }}" hx-push-url="{{ app_url }}" hx-target="#content-wrapper">{{ app.name }}</a></td>
-            <td>{{ ('apps.type.' + app.type.value) | i18n }}</td>
+        <tr hx-get="/ui/content/app/{{ app.code }}" hx-push-url="/ui/app/{{ app.code }}" hx-target="#content-wrapper" role="link">
+            <td>{{ app.code }}</td>
+            <td>{{ app.name }}</td>
             <td>{{ ', '.join(app.tags) }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3">{{ 'global.no_result'| i18n }}</td>
         </tr>
         {% endfor %}
     </tbody>
