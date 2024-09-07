@@ -1,5 +1,5 @@
 <div class="row d-flex px-2 pt-3 mb-3 bg-body-tertiary" id="apps-header">
-  <h2>{{ app.name }} - {{ app.code }}</h2>
+  <h2 class="bi-app-indicator"><span class="ms-2">{{ app.name }} - {{ app.code }}</span></h2>
   <ul class="nav nav-tabs fs-5 px-1" x-data="{active: '{{ active }}'}" hx-target="#apps-content" hx-trigger="click" >
     <li class="nav-item">
         <a class="nav-link px-3" :class="active === 'about' && 'active'" @click="active = 'about'" href="#" hx-get="/ui/partial/app/{{ app.id }}/about" hx-push-url="/ui/app/{{ app.id }}/about">
