@@ -3,6 +3,7 @@ en:
   appname: DevPortal
   applications: Applications
   application: Application
+  components: Components
   homepage: Homepage
   metadata: Metadata
   no_result: No result.

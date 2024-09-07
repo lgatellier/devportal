@@ -1,3 +1,6 @@
 fr:
+  action:
+    new: Nouveau composant
   type:
-    library: Bibliothèque
+    values:
+      library: Bibliothèque

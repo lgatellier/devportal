@@ -1,6 +1,7 @@
 from enum import Enum
 from uuid import uuid4, UUID
 from sqlmodel import Field, Relationship, SQLModel, select, Session
+from sqlalchemy.orm import selectinload
 
 from devportal.core.models import engine, get_session
 
@@ -58,11 +59,17 @@ class ApplicationQuery:
 
 class ComponentQuery:
     @staticmethod
-    def list(application_id: UUID):
+    def list(application_id: UUID = None):
         with get_session() as session:
             statement = select(Component).where(
                 Component.application_id == application_id
             )
+            return session.exec(statement).all()
+
+    @staticmethod
+    def list_all():
+        with get_session() as session:
+            statement = select(Component).options(selectinload(Component.application))
             return session.exec(statement).all()
 
     @staticmethod

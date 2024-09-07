@@ -4,14 +4,20 @@
             <th>Code</th>
             <th>Name</th>
             <th>Type</th>
+            {% if show_application %}
+            <th>Application</th>
+            {% endif %}
         </tr>
     </thead>
     <tbody class="table-group-divider" style="cursor: pointer;">
-        {% for cmp in components %}
-        <tr hx-get="/ui/content/component/{{cmp.id}}" hx-target="#content-wrapper" hx-push-url="/ui/component/{{ cmp.id }}" role="link">
-            <td>{{ cmp.code }}</td>
-            <td>{{ cmp.name }}</td>
-            <td>{{ cmp.type }}</td>
+        {% for component in components %}
+        <tr hx-get="/ui/content/component/{{component.id}}" hx-target="#content-wrapper" hx-push-url="/ui/component/{{ component.id }}" role="link">
+            <td>{{ component.code }}</td>
+            <td>{{ component.name }}</td>
+            <td>{{ ('components.type.values.' + component.type.value) | i18n }}</td>
+            {% if show_application %}
+            <td>{{ component.application.name }} - {{ component.application.code }}</td>
+            {% endif %}
         </tr>
         {% else %}
         <tr>

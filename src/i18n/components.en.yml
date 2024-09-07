@@ -1,6 +1,9 @@
 en:
+  action:
+    new: New component
   type:
     label: Type
-    batch: Batch
-    service: Service
-    library: Library
+    values:
+      batch: Batch
+      service: Service
+      library: Library
