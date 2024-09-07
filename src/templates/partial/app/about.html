@@ -3,7 +3,9 @@
     <div class="card-body">
       <h5 class="card-title">{{ 'global.metadata' | i18n }}</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <dl class="row col-6">
+      <dl class="row col-6"></dl>
+        <dt class="col-6">{{ 'global.domain' | i18n }}</dt>
+        <dd class="col-6">{{ app.domain.name if app.domain else "N/A" }}</dd>
         <dt class="col-6">{{ 'global.owner' | i18n }}</dt>
         <dd class="col-6">TODO : Someone</dd>
       </dl>
@@ -11,7 +13,6 @@
     <div class="card-footer">
       <span class="card-link">
         <i class="bi-tag"></i><span class="ms-2">
-
         {% if app.tags %}
           {{ app.tags | join(', ') }}
         {% else %}
