@@ -1,0 +1,6 @@
+en:
+  type:
+    label: Type
+    batch: Batch
+    service: Service
+    library: Library

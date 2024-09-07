@@ -8,7 +8,7 @@ import alembic_postgresql_enum  # noqa: F401
 
 from sqlmodel import SQLModel
 
-from devportal.core.model import Application  # noqa: F401
+from devportal.core.models.app import *  # noqa: F401, F403
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

@@ -2,7 +2,7 @@ from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
 from devportal.core import api
-from devportal.core.ui.app import create, list, read  # noqa: F401
+from devportal.core.ui import app, component  # noqa: F401
 
 
 @api.get("/", response_class=RedirectResponse, status_code=301)

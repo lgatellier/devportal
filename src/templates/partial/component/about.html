@@ -2,9 +2,11 @@
   <div class="card mx-2 flex-fill">
     <div class="card-body">
       <h5 class="card-title">{{ 'global.metadata' | i18n }}</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text">{{ component.description }}</p>
       <dl class="row col-6">
-        <dt class="col-6">{{ 'apps.owner' | i18n }}</dt>
+        <dt class="col-6">{{ 'global.application' | i18n }}</dt>
+        <dd class="col-6">{{ component.application.name }} - {{ component.application.code }}</dd>
+        <dt class="col-6">{{ 'global.owner' | i18n }}</dt>
         <dd class="col-6">TODO : Someone</dd>
         <dt class="col-6">{{ 'apps.technology.label' | i18n }}</dt>
         <dd class="col-6">TODO some tech stack</dd>
@@ -14,20 +16,13 @@
       <span class="card-link">
         <i class="bi-tag"></i><span class="ms-2">
 
-        {% if app.tags %}
-          {{ app.tags | join(', ') }}
+        {% if component.tags %}
+          {{ component.tags | join(', ') }}
         {% else %}
           {{ 'global.no_tags' | i18n }}
         {% endif %}
         </span>
       </span>
-    </div>
-  </div>
-  <div class="card mx-2 flex-fill">
-    <div class="card-body">
-      <h5 class="card-title">{{ 'apps.components' | i18n }}</h5>
-      <p class="card-text">The app's component list.</p>
-      <div hx-get="/ui/partial/components?application_id={{ app.id }}" hx-trigger="load"></div>
     </div>
   </div>
 </div>

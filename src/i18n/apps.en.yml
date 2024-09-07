@@ -1,11 +1,11 @@
 en:
-  about: About
   alert:
     new:
       success: The application '__NAME__' has been created.
   app_url: Application URL
   app_repo: Application repository
   code: Code
+  components: Components
   databases: Databases
   database:
     dbname: Database name
@@ -23,7 +23,6 @@ en:
     almalinux: AlmaLinux
     centos: CentOS
     windowsserver: Windows Server
-  owner: Owner
   servers: Servers
   server:
     actions: Actions
@@ -35,8 +34,3 @@ en:
     label: Technology
     java: Java
     python: Python
-  type:
-    label: Type
-    batch: Batch
-    service: Service
-    library: Library
