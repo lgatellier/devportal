@@ -1,16 +1,16 @@
-from devportal.core.app import app, templates
+from devportal.core import api, templates
 from fastapi import Request
 from fastapi.responses import HTMLResponse
 
 from devportal.core.model import Type
 
 
-@app.get("/ui/apps", response_class=HTMLResponse)
+@api.get("/ui/apps", response_class=HTMLResponse)
 async def page_apps(request: Request):
     return templates.TemplateResponse(request=request, name="pages/applications.html")
 
 
-@app.get("/ui/content/apps", response_class=HTMLResponse)
+@api.get("/ui/content/apps", response_class=HTMLResponse)
 async def content_apps(request: Request):
     from devportal.apps import main
 
@@ -22,7 +22,7 @@ async def content_apps(request: Request):
     )
 
 
-@app.get("/ui/partial/app/new", response_class=HTMLResponse)
+@api.get("/ui/partial/app/new", response_class=HTMLResponse)
 async def new_app_modal(request: Request):
     return templates.TemplateResponse(
         request=request,
