@@ -1,5 +1,5 @@
 <div class="row d-flex px-2 pt-3 mb-3 bg-body-tertiary" id="apps-header">
-  <h2>{{ 'global.applications' | i18n }}</h2>
+  <h2 class="bi-app-indicator"><span class="ms-2">{{ 'global.applications' | i18n }}</span></h2>
 </div>
 <div id="apps-actions" class="d-flex justify-content-end">
     <button class="btn btn-primary" hx-get="/ui/partial/app/new" hx-target="#newAppModal" data-bs-toggle="modal" data-bs-target="#newAppModal" hx-trigger="click">
