@@ -4,6 +4,7 @@ en:
   applications: Applications
   application: Application
   components: Components
+  domain: Domain
   homepage: Homepage
   metadata: Metadata
   no_result: No result.

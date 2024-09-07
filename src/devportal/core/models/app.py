@@ -6,14 +6,30 @@ from sqlalchemy.orm import selectinload
 from devportal.core.models import engine, get_session
 
 
-class ApplicationBase(SQLModel):
-    code: str = Field(min_length=1, nullable=False)
+class DomainBase(SQLModel):
     name: str = Field(min_length=1, nullable=False)
     description: str = Field(min_length=1, nullable=False)
 
 
+class Domain(DomainBase, table=True):
+    id: UUID = Field(default_factory=uuid4, primary_key=True)
+    applications: list["Application"] = Relationship(back_populates="domain")
+
+
+class ApplicationBase(SQLModel):
+    code: str = Field(min_length=1, nullable=False)
+    name: str = Field(min_length=1, nullable=False)
+    description: str = Field(min_length=1, nullable=False)
+    domain_id: UUID = Field(
+        default=None, foreign_key="domain.id", nullable=False, index=True
+    )
+
+
 class Application(ApplicationBase, table=True):
     id: UUID = Field(default_factory=uuid4, primary_key=True)
+    domain: Domain = Relationship(
+        back_populates="applications", sa_relationship_kwargs={"lazy": "joined"}
+    )
     components: list["Component"] = Relationship(back_populates="application")
 
 
