@@ -6,10 +6,10 @@ import i18n
 from jinja2 import Environment, FileSystemLoader
 
 
-app = FastAPI()
+api = FastAPI()
 
 
-@app.exception_handler(RequestValidationError)
+@api.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
     if request.headers["HX-Request"] == "true":
         return templates.TemplateResponse(
@@ -29,4 +29,4 @@ i18n.set("locale", "fr")
 i18n.set("fallback", "en")
 i18n.load_path.append("src/i18n")
 
-__all__ = ["app", "templates"]
+__all__ = ["api", "templates"]

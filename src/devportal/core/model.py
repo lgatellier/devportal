@@ -27,4 +27,4 @@ def get_session():
     return Session(engine)
 
 
-__all__ = ["engine", "get_session", "Application"]
+__all__ = ["engine", "get_session", "Application", "ApplicationBase"]
