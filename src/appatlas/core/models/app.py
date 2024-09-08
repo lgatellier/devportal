@@ -148,6 +148,14 @@ class ComponentQuery:
             session.commit()
 
 
+class TechStackQuery:
+    @staticmethod
+    def list_all():
+        with get_session() as session:
+            statement = select(TechStack)
+            return session.exec(statement).all()
+
+
 __all__ = [
     "Application",
     "ApplicationBase",
@@ -155,4 +163,7 @@ __all__ = [
     "Component",
     "ComponentBase",
     "ComponentQuery",
+    "TechStack",
+    "TechStackBase",
+    "TechStackQuery",
 ]

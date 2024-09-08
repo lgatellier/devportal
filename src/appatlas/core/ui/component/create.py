@@ -2,13 +2,15 @@ from fastapi import Request
 from fastapi.responses import HTMLResponse
 
 from appatlas.core.ui import ui_app, templates
-from appatlas.core.models.app import ComponentBase, ComponentQuery, Type
+from appatlas.core.models.app import ComponentBase, ComponentQuery, Type, TechStackQuery
 
 
 @ui_app.get("/partial/component/new", response_class=HTMLResponse)
 async def new_component_modal(request: Request):
     return templates.TemplateResponse(
-        request=request, name="partial/component/new.html", context={"types": Type}
+        request=request,
+        name="partial/component/new.html",
+        context={"types": Type, "techstacks": TechStackQuery.list_all()},
     )
 
 

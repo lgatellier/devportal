@@ -38,6 +38,13 @@
               {% endfor %}
             </select>
           </div>
+          <div class="mb-3">
+            <label for="componentApplication" class="form-label">{{ 'components.techstack' | i18n }}</label>
+            <select class="form-select" id="componentType" name="type">
+              {% for stack in techstacks %}
+              <option value="{{ stack.id }}">{{ stack.name }}</option>
+              {% endfor %}
+            </select>
         </form>
       </div>
       <div class="modal-footer">

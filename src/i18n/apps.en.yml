@@ -31,7 +31,3 @@ en:
     hostname: Hostname
     os: Operating System
     status: Status
-  technology:
-    label: Technology
-    java: Java
-    python: Python

@@ -22,5 +22,3 @@ fr:
     hostname: Nom d'hôte
     os: Système d'Exploitation
     status: Statut
-  technology:
-    label: Technologie

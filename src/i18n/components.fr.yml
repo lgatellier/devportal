@@ -5,6 +5,7 @@ fr:
     new:
       success: Le composant '__NAME__' a été créé.
   name: Nom
+  techstack: Écosystème technologique
   type:
     values:
       library: Bibliothèque
