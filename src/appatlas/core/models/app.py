@@ -85,7 +85,7 @@ class Component(ComponentBase, table=True):
 
 class ApplicationQuery:
     @staticmethod
-    def list():
+    def list_all():
         with get_session() as session:
             statement = select(Application)
             return session.exec(statement).all()

@@ -12,7 +12,7 @@ async def page_apps(request: Request):
 
 @ui_app.get("/content/apps", response_class=HTMLResponse)
 async def content_apps(request: Request):
-    apps_list = ApplicationQuery.list()
+    apps_list = ApplicationQuery.list_all()
     return templates.TemplateResponse(
         request=request,
         name="content/applications.html",
