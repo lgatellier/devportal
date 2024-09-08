@@ -13,11 +13,11 @@
           </div>
           <div class="mb-3" x-data="{'applications': [], 'search': '', 'selected': '', 'opened': false}">
             <label for="componentApplication" class="form-label">{{ 'global.application' | i18n }}</label>
-            <input type="text" class="form-control" :value="selected && selected.name" list="autocomplete-results" @keyup.throttle="if($event.target.value.length > 2) { applications = await(await fetch('http://127.0.0.1:8000/api/applications?search=' + $event.target.value)).json() ; opened = true;}" autocomplete="off">
+            <input type="text" class="form-control" :value="selected && (selected.name + ' - ' + selected.code)" list="autocomplete-results" @input.debounce="if($event.target.value.length > 2) { applications = await(await fetch('http://127.0.0.1:8000/api/applications?search=' + $event.target.value)).json() ; opened = true;} else {opened = false;}" autocomplete="off">
             <input type="hidden" name="application_id" :value="selected && selected.id" />
             <div id="autocomplete-results" class="list-group position-absolute" @click.outside="opened = false" :class="!opened && 'd-none'">
               <template x-for="app in applications">
-                <a href="#" class="list-group-item list-group-item-action" x-text="app.name" @click="selected = app ; opened = false ;"></a>
+                <a href="#" class="list-group-item list-group-item-action" x-text="app.name + ' - ' + app.code" @click="selected = app ; opened = false ;"></a>
               </template>
             </div>
           </div>
