@@ -1,7 +1,8 @@
 from enum import Enum
 from uuid import uuid4, UUID
-from sqlmodel import Field, Relationship, SQLModel, select, Session, or_
-from sqlalchemy.orm import selectinload
+from pydantic import computed_field
+from sqlmodel import Field, Relationship, SQLModel, distinct, select, Session, or_, func
+from sqlalchemy.orm import selectinload, column_property
 
 from appatlas.core.models import engine, get_session
 
@@ -31,6 +32,11 @@ class Application(ApplicationBase, table=True):
         back_populates="applications", sa_relationship_kwargs={"lazy": "joined"}
     )
     components: list["Component"] = Relationship(back_populates="application")
+
+    @computed_field
+    @property
+    def techstacks(self) -> str:
+        return self._techstacks
 
     @staticmethod
     def from_base(source: ApplicationBase) -> "Application":
@@ -81,6 +87,14 @@ class Component(ComponentBase, table=True):
         for key, val in source.model_dump().items():
             setattr(result, key, val)
         return result
+
+
+Application._techstacks = column_property(
+    select(func.aggregate_strings(distinct(TechStack.name), ", "))
+    .join(Component)
+    .where(Component.application_id == Application.id)
+    .scalar_subquery()
+)
 
 
 class ApplicationQuery:

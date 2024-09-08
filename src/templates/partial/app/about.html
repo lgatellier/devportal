@@ -8,6 +8,8 @@
         <dd class="col-6">{{ app.domain.name if app.domain else "N/A" }}</dd>
         <dt class="col-6">{{ 'global.owner' | i18n }}</dt>
         <dd class="col-6">TODO : Someone</dd>
+        <dt class="col-6">{{ 'components.techstack' | i18n }}</dt>
+        <dd class="col-6">{{ app.techstacks }}</dd>
       </dl>
     </div>
     <div class="card-footer">

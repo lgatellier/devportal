@@ -13,6 +13,7 @@
             <th>Code</th>
             <th>Name</th>
             <th>Domain</th>
+            <th>Technologies</th>
             <th>Tags</th>
         </tr>
     </thead>
@@ -22,6 +23,7 @@
             <td>{{ app.code }}</td>
             <td>{{ app.name }}</td>
             <td>{{ app.domain.name if app.domain else "N/A" }}</td>
+            <td>{{ app.techstacks }}</td>
             <td>{{ ', '.join(app.tags) }}</td>
         </tr>
         {% else %}
