@@ -22,7 +22,6 @@ async def ui_root():
 
 @ui_app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
-    print(request.headers)
     if "HX-Request" in request.headers:
         return templates.TemplateResponse(
             request=request,

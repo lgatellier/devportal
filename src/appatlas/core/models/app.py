@@ -48,6 +48,7 @@ class Application(ApplicationBase, table=True):
 
 class Type(Enum):
     batch = "batch"
+    frontend = "frontend"
     library = "library"
     service = "service"
 

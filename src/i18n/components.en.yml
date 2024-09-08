@@ -12,5 +12,6 @@ en:
     label: Type
     values:
       batch: Batch
+      frontend: Frontend
       service: Service
       library: Library
