@@ -2,7 +2,7 @@
   <div class="card mx-2 flex-fill">
     <div class="card-body">
       <h5 class="card-title">{{ 'global.metadata' | i18n }}</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text">{{ app.description }}</p>
       <dl class="row col-6">
         <dt class="col-6">{{ 'global.domain' | i18n }}</dt>
         <dd class="col-6">{{ app.domain.name if app.domain else "N/A" }}</dd>
